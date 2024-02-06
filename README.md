@@ -1,6 +1,6 @@
 # Stock Prediction Model with Streamlit Interface
 
-This repository contains a Python-based stock prediction model with a user-friendly Streamlit interface. The model utilizes historical data obtained from the AlphaVantage API for training and prediction purposes.
+This repository contains a Python-based stock prediction model with a user-friendly Streamlit interface. The model utilizes historical data obtained from the AlphaVantage API for training and prediction purposes. THE MAIN FILE IS `TIMESERIES.py`. The Linear Model is one that uses linear correlation after training an is therefore not nearly as reliable.
 
 ## Overview
 
