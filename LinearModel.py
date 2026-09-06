@@ -60,7 +60,7 @@ def stockData():
             print(f"On {date} the predicted closing price of {abb.upper()} will be {predicted_close_price}.")
 
             nextPricePrediction = stockDataModel.predict(openCloseValues_test)
-            rmse = mean_squared_error(nextClosePrice_test, nextPricePrediction, squared=False)  #These three lines test the accuracy of the predictions
+            rmse = mean_squared_error(nextClosePrice_test, nextPricePrediction) ** 0.5  #These three lines test the accuracy of the predictions
             print(f"Root Mean Squared Error: {rmse}") #Tests actual results
         except:
             print(f"On {date} the predicted closing price of {abb.upper()} will be {predicted_close_price}.")

@@ -17,8 +17,6 @@ from keras.metrics import RootMeanSquaredError
 from keras.optimizers import Adam
 from keras.models import load_model
 
-import sys
-
 def runModel(abb):
     closeDict = {"Dates":[], "ClosePrice": []}
     api = input("Enter API key for Alpha Vantage: ")
@@ -27,19 +25,18 @@ def runModel(abb):
         return
     if not abb:
         print("Your stock abbreviation is invalid.")
-    if not os.path.isfile(f"{abb}_File"): #Checks for json file
+    cacheFile = f"{abb}_File.json"
+    if not os.path.isfile(cacheFile): #Checks for json file
         baseUrl = f'https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&datatype=json&symbol={abb}&apikey={api}'
         response = requests.get(baseUrl)
         data = response.json()
         if 'Error' in data:
             raise ValueError
-        with open(f'{abb}_File.json', 'w') as outfile: #Saves stock data in json file to prevent overuse of api key
+        with open(cacheFile, 'w') as outfile: #Saves stock data in json file to prevent overuse of api key
             json.dump(data, outfile)
     else:
-        sys.path.insert(1, f'Ai_Project\{abb}_File') 
-        filer = f"{abb}_File"
-        import filer as f
-        data = f.json() #uses Json file if available
+        with open(cacheFile) as infile:
+            data = json.load(infile) #uses Json file if available
 
     #Dictionary with dates and closing prices
     closeDict["Dates"] = list(data["Weekly Adjusted Time Series"].keys())
