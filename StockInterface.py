@@ -1,5 +1,3 @@
-import sys
-sys.path.insert(1, 'Ai_Project\TimeSeries')
 import TimeSeries as ts
 import streamlit as st
 import requests
