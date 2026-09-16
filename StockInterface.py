@@ -10,10 +10,11 @@ intro()
 def main():
     st.subheader("Great! Let's Begin.")
     searchInput = st.text_input('Enter your desired stock below.', placeholder="Ex. BA, IBM, WMT, etc..")
+    apiKey = st.text_input('Enter your Alpha Vantage API key.', type="password")
     searchList = []
     try:
         #URL Search Builder
-        baseurl = f"https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={searchInput}&apikey={ts.api}"
+        baseurl = f"https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={searchInput}&apikey={apiKey}"
         r = requests.get(baseurl)
         data = r.json()
 
