@@ -25,6 +25,7 @@ def stockData():
             raise ValueError
         historical_data = {prediction_date: info for prediction_date, info in data["Monthly Adjusted Time Series"].items() if prediction_date <= date}
 
+        predicted_close_price = None
         if date not in historical_data:
             most_recent_date = max(data["Monthly Adjusted Time Series"].keys())
             most_recent_data = data["Monthly Adjusted Time Series"][most_recent_date]
