@@ -15,7 +15,7 @@ def main():
     try:
         #URL Search Builder
         baseurl = f"https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={searchInput}&apikey={apiKey}"
-        r = requests.get(baseurl)
+        r = requests.get(baseurl, timeout=10)
         data = r.json()
 
         try:
