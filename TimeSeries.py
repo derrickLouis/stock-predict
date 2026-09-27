@@ -25,6 +25,7 @@ def runModel(abb):
         return
     if not abb:
         print("Your stock abbreviation is invalid.")
+        return
     cacheFile = f"{abb}_File.json"
     if not os.path.isfile(cacheFile): #Checks for json file
         baseUrl = f'https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&datatype=json&symbol={abb}&apikey={api}'
