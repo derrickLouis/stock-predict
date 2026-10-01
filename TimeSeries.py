@@ -31,8 +31,9 @@ def runModel(abb):
         baseUrl = f'https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&datatype=json&symbol={abb}&apikey={api}'
         response = requests.get(baseUrl, timeout=10)
         data = response.json()
-        if 'Error' in data:
-            raise ValueError
+        if 'Weekly Adjusted Time Series' not in data:
+            message = data.get('Error Message') or data.get('Note') or data.get('Information') or 'Unexpected response from Alpha Vantage.'
+            raise ValueError(message)
         with open(cacheFile, 'w') as outfile: #Saves stock data in json file to prevent overuse of api key
             json.dump(data, outfile)
     else:
