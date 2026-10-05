@@ -22,7 +22,7 @@ def main():
             for infoDict in data["bestMatches"]:
                 searchList += [infoDict['1. symbol']]
             stock = st.selectbox("Let's make it specific :)", tuple(searchList))
-            ts.runModel(stock)
+            ts.runModel(stock, apiKey)
 
         except:
             st.warning('Sorry No Results!', icon="⚠️")

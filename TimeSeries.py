@@ -17,9 +17,8 @@ from keras.metrics import RootMeanSquaredError
 from keras.optimizers import Adam
 from keras.models import load_model
 
-def runModel(abb):
+def runModel(abb, api):
     closeDict = {"Dates":[], "ClosePrice": []}
-    api = input("Enter API key for Alpha Vantage: ")
     if not api:
         print("Your API key is invalid.")
         return
