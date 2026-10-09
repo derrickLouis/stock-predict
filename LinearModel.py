@@ -19,7 +19,7 @@ def stockData():
 
     baseUrl = f'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&datatype=json&symbol={abb}&apikey={api}'
     try:
-        response = requests.get(baseUrl)
+        response = requests.get(baseUrl, timeout=10)
         data = response.json()
         if 'Error' in data:
             raise ValueError
