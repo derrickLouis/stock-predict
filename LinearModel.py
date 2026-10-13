@@ -16,6 +16,7 @@ def stockData():
         return
     if not abb:
         print("Your stock abbreviation is invalid.")
+        return
 
     baseUrl = f'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&datatype=json&symbol={abb}&apikey={api}'
     try:
