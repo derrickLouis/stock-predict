@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 import numpy as np
+from datetime import datetime
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
@@ -16,6 +17,11 @@ def stockData():
         return
     if not abb:
         print("Your stock abbreviation is invalid.")
+        return
+    try:
+        datetime.strptime(date, "%Y-%m-%d")
+    except ValueError:
+        print("Your date is invalid. Please use the format yyyy-mm-dd.")
         return
 
     baseUrl = f'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED&datatype=json&symbol={abb}&apikey={api}'
