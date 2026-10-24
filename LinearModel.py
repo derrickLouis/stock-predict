@@ -10,8 +10,7 @@ def stockData():
     AllInfoDict = {"Dates":[], "OpenPrice":[], "ClosePrice": []}
     api = input("Enter API key for Alpha Vantage: ")
     abb = input("Enter stock abbreviation: ").upper()
-    date = input("Please enter a prediciton date in this format | yyyy-mm-dd :")
-    #UGD5N6SQGQKLBNUE
+    date = input("Please enter a prediction date in this format | yyyy-mm-dd :")
     if not api:
         print("Your API key is invalid.")
         return
