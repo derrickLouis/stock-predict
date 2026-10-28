@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 
+# Generated model artifacts and API response caches
+*.keras
+*_File.json
+
 # Environments
 venv/
 .venv/
