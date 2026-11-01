@@ -12,6 +12,12 @@ def main():
     searchInput = st.text_input('Enter your desired stock below.', placeholder="Ex. BA, IBM, WMT, etc..")
     apiKey = st.text_input('Enter your Alpha Vantage API key.', type="password")
     searchList = []
+    if not searchInput:
+        st.info("Please enter a stock symbol to search.")
+        return
+    if not apiKey:
+        st.info("Please enter your Alpha Vantage API key.")
+        return
     try:
         #URL Search Builder
         baseurl = f"https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={searchInput}&apikey={apiKey}"
