@@ -30,9 +30,9 @@ def main():
             stock = st.selectbox("Let's make it specific :)", tuple(searchList))
             ts.runModel(stock, apiKey)
 
-        except:
+        except Exception:
             st.warning('Sorry No Results!', icon="⚠️")
-    except:
+    except Exception:
         st.warning('Sorry it looks like we\'re experiencing high traffic at the moment! Please try again later.', icon="😢")
 
 

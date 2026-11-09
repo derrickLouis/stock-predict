@@ -69,9 +69,9 @@ def stockData():
             nextPricePrediction = stockDataModel.predict(openCloseValues_test)
             rmse = mean_squared_error(nextClosePrice_test, nextPricePrediction) ** 0.5  #These three lines test the accuracy of the predictions
             print(f"Root Mean Squared Error: {rmse}") #Tests actual results
-        except:
+        except Exception:
             print(f"On {date} the predicted closing price of {abb.upper()} will be {predicted_close_price}.")
-    except:
+    except Exception:
         print("Sorry you have an invalid input.")
         return
 stockData()
