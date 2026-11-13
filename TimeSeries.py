@@ -27,8 +27,9 @@ def runModel(abb, api):
         return
     cacheFile = f"{abb}_File.json"
     if not os.path.isfile(cacheFile): #Checks for json file
-        baseUrl = f'https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&datatype=json&symbol={abb}&apikey={api}'
-        response = requests.get(baseUrl, timeout=10)
+        baseUrl = 'https://www.alphavantage.co/query'
+        params = {"function": "TIME_SERIES_WEEKLY_ADJUSTED", "datatype": "json", "symbol": abb, "apikey": api}
+        response = requests.get(baseUrl, params=params, timeout=10)
         data = response.json()
         if 'Weekly Adjusted Time Series' not in data:
             message = data.get('Error Message') or data.get('Note') or data.get('Information') or 'Unexpected response from Alpha Vantage.'
